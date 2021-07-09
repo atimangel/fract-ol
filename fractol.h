@@ -30,4 +30,8 @@ int			red_cross(int arg, void *parm);
 **UTILITIE
 */
 void			error(char *str);
+/*
+**MANDELBROT
+*/
+void			mandelbrot(t_mlx mlx);
 #endif
