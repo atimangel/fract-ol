@@ -4,6 +4,8 @@ int	main(int arg_n, char **arg_s)
 {
 	t_mlx	mlx;
 
+	mlx.x = 1920;
+	mlx.y = 1080;
 	mlx.ptr = mlx_init();
 	if (!mlx.ptr)
 		error("mlx_init fail");
@@ -11,7 +13,7 @@ int	main(int arg_n, char **arg_s)
 	if (!mlx.win)
 		error("mlx_new_window fail");
 	mlx.img = mlx_new_image(mlx.ptr, mlx.x, mlx.y);
-	if (!mlx.img)
+	if (mlx.img == NULL)
 		error("mlx_new_image fail");
 	mlx.pix_str = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.len, &mlx.endian);
 	if (!mlx.pix_str)
@@ -19,7 +21,7 @@ int	main(int arg_n, char **arg_s)
 	mlx_key_hook(mlx.win, escape, 0);
 	mlx_hook(mlx.win, 17, 0, red_cross, 0);
 	//mlx_mouse_hook(mlx.win, zoom, 0);
-	julia
-	mandelbrot
+	//julia
+	mandelbrot(mlx);
 	mlx_loop(mlx.ptr);
 }

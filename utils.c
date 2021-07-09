@@ -1,4 +1,4 @@
-#include "fratol.h"
+#include "fractol.h"
 
 void	error(char *message)
 {
