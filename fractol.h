@@ -32,7 +32,7 @@ typedef struct		s_mandelbrot
 	float		bb;
 	unsigned char	r;
 	unsigned char	g;
-	unsigned char	b;
+	unsigned char	blue;
 	unsigned char	*pixel_byte;
 }			t_mandelbrot;
 /*
@@ -47,5 +47,5 @@ void			error(char *str);
 /*
 **MANDELBROT
 */
-void			mandelbrot(t_mlx mlx, int n);
+void			mandelbrot(t_mlx mlx, int n, float a, float b);
 #endif
