@@ -19,8 +19,22 @@ typedef	struct		s_mlx
 	int		endian;
 	unsigned int	x;
 	unsigned int	y;
+	float		ratio;
 }			t_mlx;
 
+typedef struct		s_mandelbrot
+{
+	float		ca;
+	float		cb;
+	float		a;
+	float		b;
+	float		aa;
+	float		bb;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	unsigned char	*pixel_byte;
+}			t_mandelbrot;
 /*
 **EVENT
 */
@@ -33,5 +47,5 @@ void			error(char *str);
 /*
 **MANDELBROT
 */
-void			mandelbrot(t_mlx mlx);
+void			mandelbrot(t_mlx mlx, int n);
 #endif

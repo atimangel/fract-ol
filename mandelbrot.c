@@ -15,58 +15,63 @@ void	put_color(unsigned char *pixel, unsigned char r, unsigned char g, unsigned 
 	pixel[2] = b;
 }
 
-void	mandelbrot(t_mlx mlx)
+void	reset(t_mlx mlx, t_mandelbrot *man, int x, int y)
 {
-	int	x;
-	int	y;
-	float	ca;
-	float	cb;
-	float	a;
-	float	b;
-	float	aa;
-	float	bb;
-	int	n;
-	int	i;
-	unsigned char r;
-	unsigned char g;
-	unsigned char blue;
-	unsigned char *pixel_byte;
-	float	ratio;
+	man->pixel_byte = mlx.pix_str + mlx.bpp * x / 8 + mlx.len * y;
+	man->r = 0;
+	man->g = 0;
+	man->b = 0;
+	man->ca = map(x, mlx.x, -2 * ratio, 2 * ratio);
+	man->cb = map(y, mlx.y, -2, 2);
+	man->a = man->ca;
+	man->b = man->cb;
+}
 
-	ratio = (float)mlx.x / mlx.y;
-	n = 50;//변수로 사용 가능
+int	mandelbrot_iterative(t_mandelbrot *man, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		man->aa = pow(man->a, 2) - pow(man->b, 2) + man->ca:
+		man->bb = 2 * man->a * man->b + man->cb;
+		if (pow(man->aa, 2) + pow(man->bb, 2) > 4)
+			break;
+		man->a = man->aa;
+		man->b = man->bb;
+		i++
+	}
+	return (i);
+}
+
+void	trans_color(t_mandelbrot *man, int i)
+{
+	if (pow(man->a, 2) + pow(man->b, 2) <= 4)
+	{
+		man->r = 60 * (i + 1) % 255;
+		man->g = 50 * (i + 1) % 255;
+		man->b = 70 * (i + 1) % 255;
+	}
+}
+
+void	mandelbrot(t_mlx mlx, int n)
+{
+	int		x;
+	int		y;
+	int		i;
+	t_mandelbrot	man;
+
 	x = 0;
 	while (x < mlx.x)
 	{
 		y = 0;
 		while (y < mlx.y)
 		{
-			pixel_byte = mlx.pix_str + mlx.bpp * x / 8 + mlx.len * y;
-			r = 0;
-			g = 0;
-			blue = 0;
-			ca = map(x, mlx.x, -2 * ratio , 2 * ratio);//뒤에 두 값도 변수로 사용 가능
-			cb = map(y, mlx.y, -2, 2);
-			a = ca;
-			b = cb;
-			i = 0;
-			while (i < n)
-			{
-				aa = pow(a, 2) - pow(b, 2) + ca;//승수도 변수로 사용 가능
-				bb = 2 * a * b + cb;
-				if (pow(aa, 2) + pow(bb, 2) > 4)
-					break;
-				a = aa;
-				b = bb;
-				i++;
-			}
-			if (pow(a, 2) + pow(b, 2) <= 4)
-			{
-				r = 60 * (i + 1) % 255;
-				g = 50 * (i + 1) % 255;
-				blue = 70 * (i + 1) % 255; 
-			}
-			put_color(pixel_byte, r, g, blue);
+			reset(mlx, &man, x, y); 
+			i = mandelbro_iterative(&man, n);
+			trans_color(&man, i);
+			put_color(mlx->pixel_byte, mlx->r, mlx->g, mlx->b);
 			y++;
 		}
 		x++;
