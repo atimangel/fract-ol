@@ -6,7 +6,7 @@ int	main(int arg_n, char **arg_s)
 
 	mlx.x = 1920;
 	mlx.y = 1080;
-	mlx,ratio = (float)mlx.x / mlx.y;
+	mlx.ratio = (float)mlx.x / mlx.y;
 	mlx.ptr = mlx_init();
 	if (!mlx.ptr)
 		error("mlx_init fail");
@@ -21,8 +21,6 @@ int	main(int arg_n, char **arg_s)
 		error("mlx_get_data_addr fail");
 	mlx_key_hook(mlx.win, escape, 0);
 	mlx_hook(mlx.win, 17, 0, red_cross, 0);
-	//mlx_mouse_hook(mlx.win, zoom, 0);
-	//julia
-	mandelbrot(mlx, 100);
+	mandelbrot(mlx, 10, 0, 0);
 	mlx_loop(mlx.ptr);
 }
