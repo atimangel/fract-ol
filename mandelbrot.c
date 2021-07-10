@@ -8,6 +8,13 @@ float	map(int x, int max, float new_min, float new_max)
 	return (place);
 }
 
+void	put_color(unsigned char *pixel, unsigned char r, unsigned char g, unsigned char b)
+{
+	pixel[0] = r;
+	pixel[1] = g;
+	pixel[2] = b;
+}
+
 void	mandelbrot(t_mlx mlx)
 {
 	int	x;
@@ -27,7 +34,7 @@ void	mandelbrot(t_mlx mlx)
 	float	ratio;
 
 	ratio = (float)mlx.x / mlx.y;
-	n = 0;//변수로 사용 가능
+	n = 50;//변수로 사용 가능
 	x = 0;
 	while (x < mlx.x)
 	{
@@ -47,19 +54,19 @@ void	mandelbrot(t_mlx mlx)
 			{
 				aa = pow(a, 2) - pow(b, 2) + ca;//승수도 변수로 사용 가능
 				bb = 2 * a * b + cb;
+				if (pow(aa, 2) + pow(bb, 2) > 4)
+					break;
 				a = aa;
 				b = bb;
 				i++;
 			}
 			if (pow(a, 2) + pow(b, 2) <= 4)
 			{
-				r = 255;
-				g = 255;
-				blue = 255;
+				r = 60 * (i + 1) % 255;
+				g = 50 * (i + 1) % 255;
+				blue = 70 * (i + 1) % 255; 
 			}
-			pixel_byte[0] = r;
-			pixel_byte[1] = g;
-			pixel_byte[2] = blue;
+			put_color(pixel_byte, r, g, blue);
 			y++;
 		}
 		x++;
