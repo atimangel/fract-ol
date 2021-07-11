@@ -77,5 +77,4 @@ void	mandelbrot(t_mlx mlx, int n, float a, float b)
 		x++;
 	}
 	mlx_put_image_to_window(mlx.ptr, mlx.win, mlx.img, 0, 0);
-	printf("put image\n");
 }

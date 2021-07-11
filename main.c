@@ -8,7 +8,6 @@ int	mouse_check(int button, int x, int y, void *parm)
 	mlx = parm;
 	if (button == 4)
 	{
-		printf("close\n");
 		if (mlx->max > mlx->min)
 		{
 			mlx->max *= 0.9;
@@ -17,7 +16,6 @@ int	mouse_check(int button, int x, int y, void *parm)
 	}
 	else if (button == 5)
 	{
-		printf("far\n");
 		if (mlx->max > mlx->min)
 		{
 			mlx->max *= 1.1;
