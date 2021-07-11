@@ -10,9 +10,9 @@ float	map(int x, int max, float new_min, float new_max)
 
 void	put_color(unsigned char *pixel, unsigned char r, unsigned char g, unsigned char b)
 {
-	pixel[0] = r;
+	pixel[0] = b;
 	pixel[1] = g;
-	pixel[2] = b;
+	pixel[2] = r;
 }
 
 void	reset(t_mlx mlx, t_mandelbrot *man, int x, int y, float a, float b)
@@ -21,8 +21,8 @@ void	reset(t_mlx mlx, t_mandelbrot *man, int x, int y, float a, float b)
 	man->r = 0;
 	man->g = 0;
 	man->blue = 0;
-	man->ca = map(x, mlx.x, -2 * mlx.ratio, 2 * mlx.ratio);
-	man->cb = map(y, mlx.y, -2, 2);
+	man->ca = map(x, mlx.x, mlx.min * mlx.ratio, mlx.max * mlx.ratio);
+	man->cb = map(y, mlx.y, mlx.min, mlx.max);
 	man->a = a;
 	man->b = b;
 }
@@ -49,9 +49,9 @@ void	trans_color(t_mandelbrot *man, int i)
 {
 	if (pow(man->a, 2) + pow(man->b, 2) <= 4)
 	{
-		man->r = 60 * (i) % 255;
-		man->g = 50 * (i) % 255;
-		man->b = 70 * (i) % 255;
+		man->r = (25 * 5 * i) % 255;
+		man->g = (25 * 2 * i) % 255;
+		man->b = (25 * 3 * i) % 255;
 	}
 }
 
@@ -77,4 +77,5 @@ void	mandelbrot(t_mlx mlx, int n, float a, float b)
 		x++;
 	}
 	mlx_put_image_to_window(mlx.ptr, mlx.win, mlx.img, 0, 0);
+	printf("put image\n");
 }
