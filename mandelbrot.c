@@ -15,7 +15,7 @@ void	put_color(unsigned char *pixel, unsigned char r, unsigned char g, unsigned 
 	pixel[2] = r;
 }
 
-void	reset(t_mlx mlx, t_mandelbrot *man, int x, int y, float a, float b)
+void	reset(t_mlx mlx, t_mandelbrot *man, int x, int y)
 {
 	man->pixel_byte = mlx.pix_str + mlx.bpp * x / 8 + mlx.len * y;
 	man->r = 0;
@@ -23,8 +23,8 @@ void	reset(t_mlx mlx, t_mandelbrot *man, int x, int y, float a, float b)
 	man->blue = 0;
 	man->ca = map(x, mlx.x, mlx.min * mlx.ratio, mlx.max * mlx.ratio);
 	man->cb = map(y, mlx.y, mlx.min, mlx.max);
-	man->a = a;
-	man->b = b;
+	man->a = mlx.a;
+	man->b = mlx.b;
 }
 
 int	mandelbrot_iterative(t_mandelbrot *man, int n)
@@ -55,7 +55,7 @@ void	trans_color(t_mandelbrot *man, int i)
 	}
 }
 
-void	mandelbrot(t_mlx mlx, int n, float a, float b)
+void	mandelbrot(t_mlx mlx)
 {
 	int		x;
 	int		y;
@@ -68,8 +68,8 @@ void	mandelbrot(t_mlx mlx, int n, float a, float b)
 		y = 0;
 		while (y < mlx.y)
 		{
-			reset(mlx, &man, x, y, a, b); 
-			i = mandelbrot_iterative(&man, n);
+			reset(mlx, &man, x, y); 
+			i = mandelbrot_iterative(&man, mlx.n);
 			trans_color(&man, i);
 			put_color(man.pixel_byte, man.r, man.g, man.blue);
 			y++;

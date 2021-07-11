@@ -2,7 +2,8 @@ NAME = fractol
 SRC = main.c\
 	event.c\
 	utils.c\
-	mandelbrot.c
+	mandelbrot.c\
+	char_to_num.c
 	
 CFLAG = -Wall -Werror -Wextra
 LINUX = -I /usr/include/lib -lXext -lX11 -lm -lbsd

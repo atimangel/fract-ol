@@ -25,7 +25,7 @@ int	mouse_check(int button, int x, int y, void *parm)
 	img = mlx->img;
 	mlx->img = mlx_new_image(mlx->ptr, mlx->x, mlx->y);
 	mlx->pix_str = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->len, &mlx->endian);
-	mandelbrot(*mlx, 100, 0, 0);
+	mandelbrot(*mlx);
 	mlx_destroy_image(mlx->ptr, img);
 }
 
@@ -33,12 +33,27 @@ int	main(int arg_n, char **arg_s)
 {
 	t_mlx	mlx;
 
+	if (arg_n >= 3)
+	{
+		mlx.a = ft_atof(arg_s[1]);
+		mlx.b = ft_atof(arg_s[2]);
+		mlx.n = 10;
+		mlx.max = 2;
+		mlx.min = -2;
+	}
+	else
+		error("argumant is not enough or to much\narg format: a b n max min\na, b is must put");
+	if (arg_n >= 4)
+		mlx.n = ft_atoi(arg_s[3]);
+	if (arg_n >= 6)
+	{
+		mlx.max = ft_atof(arg_s[4]);
+		mlx.min = ft_atof(arg_s[5]);
+	}
 	mlx.x = 1920;
 	mlx.y = 1080;
 	mlx.ratio = (float)mlx.x / mlx.y;
 	mlx.ptr = mlx_init();
-	mlx.max = 2;
-	mlx.min = -2;
 	if (!mlx.ptr)
 		error("mlx_init fail");
 	mlx.win = mlx_new_window(mlx.ptr, mlx.x, mlx.y, "fractol");
@@ -53,6 +68,6 @@ int	main(int arg_n, char **arg_s)
 	mlx_key_hook(mlx.win, escape, 0);
 	mlx_hook(mlx.win, 17, 0, red_cross, 0);
 	mlx_mouse_hook(mlx.win, mouse_check, &mlx);
-	mandelbrot(mlx, 100, 0, 0);
+	mandelbrot(mlx);
 	mlx_loop(mlx.ptr);
 }

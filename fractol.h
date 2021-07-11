@@ -22,6 +22,9 @@ typedef	struct		s_mlx
 	float		ratio;
 	float		max;
 	float		min;
+	float		a;
+	float		b;
+	int		n;
 }			t_mlx;
 
 typedef struct		s_mandelbrot
@@ -46,8 +49,10 @@ int			red_cross(int arg, void *parm);
 **UTILITIE
 */
 void			error(char *str);
+int			ft_atoi(const char *string);
+float			ft_atof(const char *string);
 /*
 **MANDELBROT
 */
-void			mandelbrot(t_mlx mlx, int n, float a, float b);
+void			mandelbrot(t_mlx mlx);
 #endif
