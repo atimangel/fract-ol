@@ -20,6 +20,8 @@ typedef	struct		s_mlx
 	unsigned int	x;
 	unsigned int	y;
 	float		ratio;
+	float		max;
+	float		min;
 }			t_mlx;
 
 typedef struct		s_mandelbrot
