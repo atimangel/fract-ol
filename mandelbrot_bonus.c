@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   mandelbrot_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:02:00 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/12 11:55:37 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/12 18:46:28 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 static int	mandelbrot_iterative(t_mandelbrot *man, int n)
 {
@@ -45,7 +45,7 @@ void	mandelbrot(t_mlx mlx)
 		{
 			reset(mlx, &man, x, y);
 			i = mandelbrot_iterative(&man, mlx.n);
-			trans_color(&man, i);
+			trans_color(mlx, &man, i);
 			put_color(man.pixel_byte, man.r, man.g, man.blue);
 			y++;
 		}
