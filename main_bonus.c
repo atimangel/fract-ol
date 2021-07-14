@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/13 18:11:46 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/14 12:04:46 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ int	main(int arg_n, char **arg_s)
 	mlx_hook(mlx.win, 17, 0, red_cross, &mlx);
 	mlx_mouse_hook(mlx.win, mouse_check, &mlx);
 	//mandelbrot(mlx);
-	draw_triangle(mlx, tri, 0);
+	draw_triangle(mlx, tri, 5);
 	mlx_loop(mlx.ptr);
 }
