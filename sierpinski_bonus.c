@@ -6,15 +6,13 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 14:00:24 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/14 12:04:16 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 12:27:58 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-void	remove_triangle(t_mlx mlx, t_triangle tr, int n);//range of resolution will make efficient
-
-void	remove_1(t_mlx mlx, t_triangle big, t_triangle small, int n)
+void	remove_1(t_mlx mlx, t_triangle big, t_triangle small)
 {
 	t_triangle left;
 
@@ -28,10 +26,11 @@ void	remove_1(t_mlx mlx, t_triangle big, t_triangle small, int n)
 	left.o1.y = left.p1.y - left.p0.y;
 	left.o2.x = left.p2.x - left.p0.x;
 	left.o2.y = left.p2.y - left.p0.y;
-	remove_triangle(mlx, left, --n);
+	mlx.n--;
+	remove_triangle(mlx, left);
 }
 
-void	remove_2(t_mlx mlx, t_triangle big, t_triangle small, int n)
+void	remove_2(t_mlx mlx, t_triangle big, t_triangle small)
 {
 	t_triangle up;
 
@@ -45,10 +44,11 @@ void	remove_2(t_mlx mlx, t_triangle big, t_triangle small, int n)
 	up.o1.y = up.p1.y - up.p0.y;
 	up.o2.x = up.p2.x - up.p0.x;
 	up.o2.y = up.p2.y - up.p0.y;
-	remove_triangle(mlx, up, --n);
+	mlx.n--;
+	remove_triangle(mlx, up);
 }
 
-void	remove_3(t_mlx mlx, t_triangle big, t_triangle small, int n)
+void	remove_3(t_mlx mlx, t_triangle big, t_triangle small)
 {
 	t_triangle right;
 
@@ -62,99 +62,109 @@ void	remove_3(t_mlx mlx, t_triangle big, t_triangle small, int n)
 	right.o1.y = right.p1.y - right.p0.y;
 	right.o2.x = right.p2.x - right.p0.x;
 	right.o2.y = right.p2.y - right.p0.y;
-	remove_triangle(mlx, right, --n);
+	mlx.n--;
+	remove_triangle(mlx, right);
 }
-void	remove_triangle(t_mlx mlx, t_triangle tr, int n)//range of resolution will make efficient
+
+void	set_new_tri(t_mlx *mlx, t_triangle tr, t_triangle *new)
+{
+	new->p0.x = (tr.p0.x + tr.p1.x) / 2;
+	new->p0.y = (tr.p0.y + tr.p1.y) / 2;
+	new->p1.x = (tr.p1.x + tr.p2.x) / 2;
+	new->p1.y = (tr.p1.y + tr.p2.y) / 2;
+	new->p2.x = (tr.p2.x + tr.p0.x) / 2;
+	new->p2.y = (tr.p2.y + tr.p0.y) / 2;
+	new->o1.x = new->p1.x - new->p0.x;
+	new->o1.y = new->p1.y - new->p0.y;
+	new->o2.x = new->p2.x - new->p0.x;
+	new->o2.y = new->p2.y - new->p0.y;
+	new->det = (new->o1.x * new->o2.y - new->o2.x * new->o1.y);
+	mlx->r = 0;
+	mlx->g = 0;
+	mlx->blue = 0;
+}
+
+void	remove_triangle(t_mlx mlx, t_triangle tr)
 {
 	int	x;
 	int	y;
 	t_triangle new;
-	float	a;
-	float	b;
-	unsigned char r;
-	unsigned char g;
-	unsigned char blue;
-	t_vector o;
-	float 	det;
-	unsigned char *pixel_byte;
 
-	if (!n)
+	if (!mlx.n)
 		return ;
-	new.p0.x = (tr.p0.x + tr.p1.x) / 2;
-	new.p0.y = (tr.p0.y + tr.p1.y) / 2;
-	new.p1.x = (tr.p1.x + tr.p2.x) / 2;
-	new.p1.y = (tr.p1.y + tr.p2.y) / 2;
-	new.p2.x = (tr.p2.x + tr.p0.x) / 2;
-	new.p2.y = (tr.p2.y + tr.p0.y) / 2;
-	new.o1.x = new.p1.x - new.p0.x;
-	new.o1.y = new.p1.y - new.p0.y;
-	new.o2.x = new.p2.x - new.p0.x;
-	new.o2.y = new.p2.y - new.p0.y;
+	set_new_tri(&mlx, tr, &new);
 	x = 0;
-	det = (new.o1.x * new.o2.y - new.o2.x * new.o1.y);
-	r = 0;
-	g = 0;
-	blue = 0;
 	while (x < mlx.x)
 	{
 		y = 0;
 		while (y < mlx.y)
 		{
-			pixel_byte = mlx.pix_str + mlx.bpp * x / 8 + mlx.len * y;
-			o.x = map(x, mlx.x, mlx.x_min, mlx.x_max) - new.p0.x;
-			o.y = -1 * map(y, mlx.y, mlx.y_min, mlx.y_max) - new.p0.y;
-			a = (o.x * new.o2.y - o.y * new.o2.x) / det;
-			b = (new.o1.x * o.y - o.x * new.o1.y) / det;
-			if (det && a >= 0.0 && b >= 0.0 && a + b <= 1.0)
-				put_color(pixel_byte, r, g, blue);
+			sir_reset(&mlx, &new, x, y);
+			is_inside(&mlx, &new, 0);
 			y++;
 		}
 		x++;
 	}
-	remove_1(mlx, tr, new, n);
-	remove_2(mlx, tr, new, n);
-	remove_3(mlx, tr, new, n);
+	remove_1(mlx, tr, new);
+	remove_2(mlx, tr, new);
+	remove_3(mlx, tr, new);
 }
 
-void	draw_triangle(t_mlx mlx, t_triangle tr, int n)
+void	sir_reset(t_mlx *mlx, t_triangle *tr, int x, int y)
+{
+	mlx->r = 0;
+	mlx->g = 0;
+	mlx->blue = 0;
+	tr->pixel_byte = mlx->pix_str + mlx->bpp * x / 8 + mlx->len * y;
+	if (tr->det)
+	{
+		tr->o.x = map(x, mlx->x, mlx->x_min, mlx->x_max) - tr->p0.x;
+		tr->o.y = -1 * map(y, mlx->y, mlx->y_min, mlx->y_max) - tr->p0.y;
+		mlx->a = (tr->o.x * tr->o2.y - tr->o.y * tr->o2.x) / tr->det;
+		mlx->b = (tr->o1.x * tr->o.y - tr->o.x * tr->o1.y) / tr->det;
+	}
+}
+
+void	is_inside(t_mlx *mlx, t_triangle *tr, char flag)
+{
+	float	a;
+	float	b;
+
+	a = mlx->a;
+	b = mlx->b;
+	if (tr->det && a >= 0.0 && b >= 0.0 && a + b <= 1.0)
+	{
+		if (flag)
+		{
+			mlx->r = 255;
+			mlx->g = 255;
+			mlx->blue = 255;
+		}
+		else if (!flag)
+			put_color(tr->pixel_byte, mlx->r, mlx->g, mlx->blue);
+	}
+	
+}
+
+void	draw_triangle(t_mlx mlx, t_triangle tr)
 {
 	int	x;
 	int	y;
-	float	a;
-	float	b;
-	t_vector o;
-	float	det;
-	unsigned char r;
-	unsigned char g;
-	unsigned char blue;
-	unsigned char *pixel_byte;
 
 	x = 0;
-	det = (tr.o1.x * tr.o2.y - tr.o2.x * tr.o1.y);
+	tr.det = (tr.o1.x * tr.o2.y - tr.o2.x * tr.o1.y);
 	while (x < mlx.x)
 	{
 		y = 0;
 		while (y < mlx.y)
 		{
-			r = 0;
-			g = 0;
-			blue = 0;
-			pixel_byte = mlx.pix_str + mlx.bpp * x / 8 + mlx.len * y;
-			o.x = map(x, mlx.x, mlx.x_min, mlx.x_max) - tr.p0.x;
-			o.y = -1 * map(y, mlx.y, mlx.y_min, mlx.y_max) - tr.p0.y;
-			a = (o.x * tr.o2.y - o.y * tr.o2.x) / det;
-			b = (tr.o1.x * o.y - o.x * tr.o1.y) / det;
-			if (det && a >= 0.0 && b >= 0.0 && a + b <= 1.0)
-			{
-				r = 255;
-				g = 255;
-				blue = 255;
-			}
-			put_color(pixel_byte, r, g, blue);
+			sir_reset(&mlx, &tr, x , y);
+			is_inside(&mlx, &tr, 1);
+			put_color(tr.pixel_byte, mlx.r, mlx.g, mlx.blue);
 			y++;
 		}
 		x++;
 	}
-	remove_triangle(mlx, tr, n);
+	remove_triangle(mlx, tr);
 	mlx_put_image_to_window(mlx.ptr, mlx.win,mlx.img, 0, 0);
 }	

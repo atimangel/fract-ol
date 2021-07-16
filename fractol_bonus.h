@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/13 16:39:44 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 12:28:10 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef	struct		s_mlx
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	blue;
+	char		flag;
 }			t_mlx;
 
 typedef struct		s_mandelbrot
@@ -71,7 +72,11 @@ typedef struct		s_triangle
 	t_vector	p2;
 	t_vector	o1;
 	t_vector	o2;
+	t_vector	o;
+	float		det;
+	unsigned char	*pixel_byte;
 }			t_triangle;
+
 /*
 **EVENT
 */
@@ -92,5 +97,12 @@ void			put_color(char *pixel, char r, char g, char b);
 void			reset(t_mlx mlx, t_mandelbrot *man, int x, int y);
 void			trans_color(t_mlx mlx, t_mandelbrot *man, int i);
 void			mandelbrot(t_mlx mlx);
-void			draw_triangle(t_mlx mlx, t_triangle tr, int n);
+void			draw_triangle(t_mlx mlx, t_triangle tr);
+void			remove_triangle(t_mlx mlx, t_triangle tr);
+void			is_inside(t_mlx *mlx, t_triangle *tr, char flag);
+void			sir_reset(t_mlx *mlx, t_triangle *tr, int x, int y);
+void			set_new_tri(t_mlx *mlx, t_triangle tr, t_triangle *new);
+void			remove_1(t_mlx mlx, t_triangle big, t_triangle small);
+void			remove_2(t_mlx mlx, t_triangle big, t_triangle small);
+void			remove_3(t_mlx mlx, t_triangle big, t_triangle small);
 #endif
