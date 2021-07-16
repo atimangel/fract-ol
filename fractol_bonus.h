@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 12:28:10 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 13:32:17 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,74 +20,74 @@
 # include <unistd.h>
 # include "mlx.h"
 
-typedef	struct		s_mlx
+typedef struct s_mlx
 {
-	void		*ptr;
-	void		*win;
-	void		*img;
-	void		*pix_str;
-	int		bpp;
-	int		len;
-	int		endian;
+	void			*ptr;
+	void			*win;
+	void			*img;
+	void			*pix_str;
+	int				bpp;
+	int				len;
+	int				endian;
 	unsigned int	x;
 	unsigned int	y;
-	float		ratio;
-	float		x_max;
-	float		x_min;
-	float		y_max;
-	float		y_min;
-	float		a;
-	float		b;
-	int		n;
+	float			ratio;
+	float			x_max;
+	float			x_min;
+	float			y_max;
+	float			y_min;
+	float			a;
+	float			b;
+	int				n;
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	blue;
-	char		flag;
-}			t_mlx;
+	char			flag;
+}				t_mlx;
 
-typedef struct		s_mandelbrot
+typedef struct s_mandelbrot
 {
-	float		ca;
-	float		cb;
-	float		a;
-	float		b;
-	float		aa;
-	float		bb;
+	float			ca;
+	float			cb;
+	float			a;
+	float			b;
+	float			aa;
+	float			bb;
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	blue;
 	unsigned char	*pixel_byte;
-}			t_mandelbrot;
+}				t_mandelbrot;
 
-typedef struct		s_vector
+typedef struct s_vector
 {
 	float		x;
 	float		y;
-}			t_vector;
+}				t_vector;
 
-typedef struct		s_triangle
+typedef struct s_triangle
 {
-	t_vector	p0;
-	t_vector	p1;
-	t_vector	p2;
-	t_vector	o1;
-	t_vector	o2;
-	t_vector	o;
-	float		det;
+	t_vector		p0;
+	t_vector		p1;
+	t_vector		p2;
+	t_vector		o1;
+	t_vector		o2;
+	t_vector		o;
+	float			det;
 	unsigned char	*pixel_byte;
-}			t_triangle;
+}				t_triangle;
 
 /*
 **EVENT
 */
 void			zoom(t_mlx *m, char flag, float x_ratio, float y_ratio);
-int			key_event(int key, void *parm);
-int			red_cross(int arg, void *parm);
+int				key_event(int key, void *parm);
+int				red_cross(int arg, void *parm);
 /*
 **UTILITIE
 */
 void			error(char *str);
-int			ft_atoi(const char *string);
+int				ft_atoi(const char *string);
 float			ft_atof(const char *string);
 /*
 **MANDELBROT
