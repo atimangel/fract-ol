@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:02:00 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/13 20:43:37 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 13:11:24 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	reset(t_mlx mlx, t_mandelbrot *man, int x, int y)
 	man->b = mlx.b;
 }
 
-void	trans_color(t_mlx mlx,t_mandelbrot *man, int i)
+void	trans_color(t_mlx mlx, t_mandelbrot *man, int i)
 {
 	if (pow(man->a, 2) + pow(man->b, 2) <= 4)
 	{
