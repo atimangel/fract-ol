@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 14:00:24 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 12:27:58 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 13:26:35 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	remove_1(t_mlx mlx, t_triangle big, t_triangle small)
 {
-	t_triangle left;
+	t_triangle	left;
 
 	left.p0.x = big.p0.x;
 	left.p0.y = big.p0.y;
@@ -32,7 +32,7 @@ void	remove_1(t_mlx mlx, t_triangle big, t_triangle small)
 
 void	remove_2(t_mlx mlx, t_triangle big, t_triangle small)
 {
-	t_triangle up;
+	t_triangle	up;
 
 	up.p0.x = small.p0.x;
 	up.p0.y = small.p0.y;
@@ -50,7 +50,7 @@ void	remove_2(t_mlx mlx, t_triangle big, t_triangle small)
 
 void	remove_3(t_mlx mlx, t_triangle big, t_triangle small)
 {
-	t_triangle right;
+	t_triangle	right;
 
 	right.p0.x = small.p2.x;
 	right.p0.y = small.p2.y;
@@ -86,9 +86,9 @@ void	set_new_tri(t_mlx *mlx, t_triangle tr, t_triangle *new)
 
 void	remove_triangle(t_mlx mlx, t_triangle tr)
 {
-	int	x;
-	int	y;
-	t_triangle new;
+	int			x;
+	int			y;
+	t_triangle	new;
 
 	if (!mlx.n)
 		return ;
@@ -143,7 +143,6 @@ void	is_inside(t_mlx *mlx, t_triangle *tr, char flag)
 		else if (!flag)
 			put_color(tr->pixel_byte, mlx->r, mlx->g, mlx->blue);
 	}
-	
 }
 
 void	draw_triangle(t_mlx mlx, t_triangle tr)
@@ -158,7 +157,7 @@ void	draw_triangle(t_mlx mlx, t_triangle tr)
 		y = 0;
 		while (y < mlx.y)
 		{
-			sir_reset(&mlx, &tr, x , y);
+			sir_reset(&mlx, &tr, x, y);
 			is_inside(&mlx, &tr, 1);
 			put_color(tr.pixel_byte, mlx.r, mlx.g, mlx.blue);
 			y++;
@@ -166,5 +165,5 @@ void	draw_triangle(t_mlx mlx, t_triangle tr)
 		x++;
 	}
 	remove_triangle(mlx, tr);
-	mlx_put_image_to_window(mlx.ptr, mlx.win,mlx.img, 0, 0);
+	mlx_put_image_to_window(mlx.ptr, mlx.win, mlx.img, 0, 0);
 }	
