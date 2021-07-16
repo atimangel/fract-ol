@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 11:40:44 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 13:01:25 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	mouse_check(int button, int x, int y, void *parm)
 	if (button == 4)
 		zoom(m, 1, (float)x / m->x, (float)y / m->y);
 	else if (button == 5)
-		zoom(m, -1, (float)x / m->x, (float)y/ m->y);
+		zoom(m, -1, (float)x / m->x, (float)y / m->y);
 }
 
 void	parse_man(int arg_n, char **arg_s, t_mlx *mlx)
@@ -81,7 +81,7 @@ void	parse_man(int arg_n, char **arg_s, t_mlx *mlx)
 
 void	parse_sir(int arg_n, char **arg_s, t_mlx *mlx)
 {
-	t_triangle tr;
+	t_triangle	tr;
 
 	if (arg_n >= 8)
 	{
@@ -129,7 +129,7 @@ void	parse(int arg_n, char **arg_s, t_mlx *mlx)
 	}
 	else if (*arg_s[1] == 's')
 	{
-		mlx->flag = 's'; 
+		mlx->flag = 's';
 		parse_sir(arg_n, arg_s, mlx);
 	}
 	else
@@ -139,7 +139,7 @@ void	parse(int arg_n, char **arg_s, t_mlx *mlx)
 int	main(int arg_n, char **arg_s)
 {
 	t_mlx	mlx;
-	
+
 	mlx.x = 1920;
 	mlx.y = 1080;
 	mlx.ratio = (float)mlx.x / mlx.y;
@@ -159,7 +159,5 @@ int	main(int arg_n, char **arg_s)
 	mlx_hook(mlx.win, 17, 0, red_cross, &mlx);
 	mlx_mouse_hook(mlx.win, mouse_check, &mlx);
 	parse(arg_n, arg_s, &mlx);
-	//mandelbrot(mlx);
-	//draw_triangle(mlx, tri);
 	mlx_loop(mlx.ptr);
 }
