@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:02:00 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/12 11:55:37 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 13:05:50 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static int	mandelbrot_iterative(t_mandelbrot *man, int n)
 
 void	mandelbrot(t_mlx mlx)
 {
-	int		x;
-	int		y;
-	int		i;
+	int				x;
+	int				y;
+	int				i;
 	t_mandelbrot	man;
 
 	x = 0;
