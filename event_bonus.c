@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:42 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/14 12:27:58 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 16:33:49 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	key_event(int key, void *parm)
 {
-	t_mlx	*mlx;
+	t_mlx			*mlx;
 	unsigned char	tmp;
 
 	mlx = (t_mlx *)parm;
