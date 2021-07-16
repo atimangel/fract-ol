@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 13:32:17 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/16 15:29:11 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,10 @@ void			error(char *str);
 int				ft_atoi(const char *string);
 float			ft_atof(const char *string);
 /*
+**PARSE
+*/
+void			parse(int arg_n, char **arg_s, t_mlx *mlx);
+/*
 **MANDELBROT
 */
 float			map(int x, int max, float new_min, float new_max);
@@ -97,6 +101,9 @@ void			put_color(char *pixel, char r, char g, char b);
 void			reset(t_mlx mlx, t_mandelbrot *man, int x, int y);
 void			trans_color(t_mlx mlx, t_mandelbrot *man, int i);
 void			mandelbrot(t_mlx mlx);
+/*
+**SIERPINSKI TRIANGLE
+*/
 void			draw_triangle(t_mlx mlx, t_triangle tr);
 void			remove_triangle(t_mlx mlx, t_triangle tr);
 void			is_inside(t_mlx *mlx, t_triangle *tr, char flag);
