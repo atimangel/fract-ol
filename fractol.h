@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 13:16:51 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/17 08:52:10 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,17 @@ typedef struct s_mlx
 	float			a;
 	float			b;
 	int				n;
+	char			flag;
 }				t_mlx;
 
 typedef struct s_mandelbrot
 {
-	float			ca;
-	float			cb;
-	float			a;
-	float			b;
-	float			aa;
-	float			bb;
+	double			ca;
+	double			cb;
+	double			a;
+	double			b;
+	double			aa;
+	double			bb;
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	blue;
@@ -69,6 +70,10 @@ float		ft_atof(const char *string);
 float		map(int x, int max, float new_min, float new_max);
 void		put_color(char *pixel, char r, char g, char b);
 void		reset(t_mlx mlx, t_mandelbrot *man, int x, int y);
+void		jul_reset(t_mlx mlx, t_mandelbrot *man, int x, int y);
 void		trans_color(t_mandelbrot *man, int i);
 void		mandelbrot(t_mlx mlx);
+int		mandelbrot_iterative(t_mandelbrot *man, int n);
+void		julia(t_mlx mlx);
+void		make_fractal(t_mlx mlx);
 #endif

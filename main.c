@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/12 12:12:35 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/18 15:03:23 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,42 @@ int	mouse_check(int button, int x, int y, void *parm)
 	img = m->img;
 	m->img = mlx_new_image(m->ptr, m->x, m->y);
 	m->pix_str = mlx_get_data_addr(m->img, &m->bpp, &m->len, &m->endian);
-	mandelbrot(*m);
+	make_fractal(*m);
 	mlx_destroy_image(m->ptr, img);
 }
 
 void	parse(int arg_n, char **arg_s, t_mlx *mlx)
 {
-	if (arg_n >= 3)
+	mlx->flag = 0;
+	if (arg_n >= 2)
+		mlx->flag = *arg_s[1];
+	if (!(mlx->flag == 'm' || mlx->flag == 'j'))
+		error("select 'j' julia set or 'm' mandelbrot set");
+	if (arg_n >= 4)
 	{
-		mlx->a = ft_atof(arg_s[1]);
-		mlx->b = ft_atof(arg_s[2]);
+		mlx->a = ft_atof(arg_s[2]);
+		mlx->b = ft_atof(arg_s[3]);
 		mlx->n = 10;
 		mlx->max = 2;
 		mlx->min = -2;
 	}
 	else
 		error("argumant is not enough or to much\na b n max min");
-	if (arg_n >= 4)
-		mlx->n = ft_atoi(arg_s[3]);
-	if (arg_n >= 6)
+	if (arg_n >= 5)
+		mlx->n = ft_atoi(arg_s[4]);
+	if (arg_n >= 7)
 	{
-		mlx->max = ft_atof(arg_s[4]);
-		mlx->min = ft_atof(arg_s[5]);
+		mlx->max = ft_atof(arg_s[5]);
+		mlx->min = ft_atof(arg_s[6]);
 	}
+}
+
+void	make_fractal(t_mlx mlx)
+{
+	if (mlx.flag == 'm')
+		mandelbrot(mlx);
+	else if (mlx.flag == 'j')
+		julia(mlx);
 }
 
 int	main(int arg_n, char **arg_s)
@@ -79,6 +92,6 @@ int	main(int arg_n, char **arg_s)
 	mlx_key_hook(mlx.win, escape, &mlx);
 	mlx_hook(mlx.win, 17, 0, red_cross, &mlx);
 	mlx_mouse_hook(mlx.win, mouse_check, &mlx);
-	mandelbrot(mlx);
+	make_fractal(mlx);
 	mlx_loop(mlx.ptr);
 }

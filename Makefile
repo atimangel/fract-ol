@@ -6,7 +6,7 @@
 #    By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/12 11:01:00 by snpark            #+#    #+#              #
-#    Updated: 2021/07/16 16:50:40 by snpark           ###   ########.fr        #
+#    Updated: 2021/07/17 07:57:44 by snpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC = main.c\
 	utils.c\
 	mandelbrot.c\
 	mandelbrot_utils.c\
+	julia.c\
 	char_to_num.c
 
 SRC_BONUS = main_bonus.c\
