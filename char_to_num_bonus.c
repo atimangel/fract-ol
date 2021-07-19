@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:36 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 13:07:59 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/18 15:19:56 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ float	ft_atof(const char *string)
 	if (string[i] == '.' && ft_isdigit(string[i + 1]))
 		under_dot = ft_atoi(string + ++i);
 	while (under_dot >= 1.0)
+		under_dot /= 10;
+	while (string[i++] == '0')
 		under_dot /= 10;
 	if (pm == -1)
 		number -= under_dot;

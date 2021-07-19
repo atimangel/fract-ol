@@ -6,7 +6,7 @@
 #    By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/12 11:01:00 by snpark            #+#    #+#              #
-#    Updated: 2021/07/17 07:57:44 by snpark           ###   ########.fr        #
+#    Updated: 2021/07/19 10:24:15 by snpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC_BONUS = main_bonus.c\
 	sierpinski_bonus.c\
 	char_to_num_bonus.c\
 	parse_bonus.c\
-	sierpinski_iterate_bonus.c
+	sierpinski_iterate_bonus.c\
+	julia_bonus.c
 
 
 CFLAG = -Wall -Werror -Wextra

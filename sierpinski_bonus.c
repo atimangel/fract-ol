@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 14:00:24 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 16:40:20 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 10:48:31 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,4 @@ void	draw_triangle(t_mlx mlx, t_triangle tr)
 	}
 	remove_triangle(mlx, tr);
 	mlx_put_image_to_window(mlx.ptr, mlx.win, mlx.img, 0, 0);
-}	
+}

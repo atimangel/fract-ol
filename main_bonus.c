@@ -6,18 +6,26 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 15:23:20 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 10:57:28 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
+void	make_fractal(t_mlx *mlx)
+{
+	if (mlx->flag == 'm')
+		mandelbrot(*mlx);
+	else if (mlx->flag == 'j')
+		julia(*mlx);
+	else if (mlx->flag == 's')
+		draw_triangle(*mlx, *(t_triangle *)mlx->tri);
+}
+
 void	zoom(t_mlx *m, char flag, float x_ratio, float y_ratio)
 {
 	void	*img;
 
-	if (m->flag == 's')
-		return ;
 	if (flag == 1 && m->x_max > m->x_min && m->y_max > m->y_min)
 	{
 		m->x_max -= m->x_max * 0.1 * (1 - x_ratio);
@@ -35,7 +43,7 @@ void	zoom(t_mlx *m, char flag, float x_ratio, float y_ratio)
 	img = m->img;
 	m->img = mlx_new_image(m->ptr, m->x, m->y);
 	m->pix_str = mlx_get_data_addr(m->img, &m->bpp, &m->len, &m->endian);
-	mandelbrot(*m);
+	make_fractal(m);
 	mlx_destroy_image(m->ptr, img);
 }
 

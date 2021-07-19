@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 16:49:36 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 10:55:52 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	parse_man(int arg_n, char **arg_s, t_mlx *mlx)
 	mlx->r = 25;
 	mlx->g = 50;
 	mlx->blue = 125;
-	mandelbrot(*mlx);
 }
 
 static void	put_triangle(int arg_n, char **arg_s, t_mlx *mlx, t_triangle *tr)
@@ -60,10 +59,13 @@ static void	put_triangle(int arg_n, char **arg_s, t_mlx *mlx, t_triangle *tr)
 
 static void	parse_sir(int arg_n, char **arg_s, t_mlx *mlx)
 {
-	t_triangle	tr;
+	t_triangle	*tr;
 
+	tr = (t_triangle *)malloc(sizeof(t_triangle));
+	if (!tr)
+		error("malloc fail");
 	if (arg_n >= 8)
-		put_triangle(arg_n, arg_s, mlx, &tr);
+		put_triangle(arg_n, arg_s, mlx, tr);
 	else
 		error("need 3 point 6 number foramt is 0x 0y 1x 1y 2x 2y n max min");
 	if (arg_n >= 9)
@@ -80,17 +82,22 @@ static void	parse_sir(int arg_n, char **arg_s, t_mlx *mlx)
 	mlx->r = 25;
 	mlx->g = 50;
 	mlx->blue = 125;
-	draw_triangle(*mlx, tr);
+	mlx->tri = tr;
+	draw_triangle(*mlx, *tr);
 }
 
 void	parse(int arg_n, char **arg_s, t_mlx *mlx)
 {
 	if (arg_n == 1)
-		error("type m or s, m for mandelbrot, s for triangle");
-	else if (*arg_s[1] == 'm')
+		error("type m or s, j");
+	else if (*arg_s[1] == 'm' || *arg_s[1] == 'j')
 	{
-		mlx->flag = 'm';
+		mlx->flag = *arg_s[1];
 		parse_man(arg_n, arg_s, mlx);
+		if (mlx->flag == 'm')
+			mandelbrot(*mlx);
+		else
+			julia(*mlx);
 	}
 	else if (*arg_s[1] == 's')
 	{
@@ -98,5 +105,5 @@ void	parse(int arg_n, char **arg_s, t_mlx *mlx)
 		parse_sir(arg_n, arg_s, mlx);
 	}
 	else
-		error("type m or s, m for mandelbrot, s for triangle");
+		error("type m or s, m, j");
 }

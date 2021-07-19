@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 15:29:11 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 10:57:18 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_mlx
 	unsigned char	g;
 	unsigned char	blue;
 	char			flag;
+	void			*tri;
 }				t_mlx;
 
 typedef struct s_mandelbrot
@@ -93,6 +94,7 @@ float			ft_atof(const char *string);
 **PARSE
 */
 void			parse(int arg_n, char **arg_s, t_mlx *mlx);
+void			make_fractal(t_mlx *mlx);
 /*
 **MANDELBROT
 */
@@ -112,4 +114,9 @@ void			set_new_tri(t_mlx *mlx, t_triangle tr, t_triangle *new);
 void			remove_1(t_mlx mlx, t_triangle big, t_triangle small);
 void			remove_2(t_mlx mlx, t_triangle big, t_triangle small);
 void			remove_3(t_mlx mlx, t_triangle big, t_triangle small);
+/*
+**JULIA
+*/
+void			jul_reset(t_mlx mlx, t_mandelbrot *man, int x, int y);
+void			julia(t_mlx mlx);
 #endif

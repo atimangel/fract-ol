@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:02:00 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/16 13:11:24 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 10:35:09 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ void	reset(t_mlx mlx, t_mandelbrot *man, int x, int y)
 
 void	trans_color(t_mlx mlx, t_mandelbrot *man, int i)
 {
-	if (pow(man->a, 2) + pow(man->b, 2) <= 4)
-	{
-		man->r = mlx.r * i % 255;
-		man->g = mlx.g * i % 255;
-		man->b = mlx.blue * i % 255;
-	}
+	man->r = mlx.r * i % 255;
+	man->g = mlx.g * i % 255;
+	man->b = mlx.blue * i % 255;
 }
