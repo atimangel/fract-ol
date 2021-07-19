@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 10:22:39 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 13:04:33 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			red_cross(int arg, void *parm);
 */
 void		error(char *str);
 int			ft_atoi(const char *string);
-float		ft_atof(const char *string);
+float		ft_atof(char *string);
 /*
 **MANDELBROT
 */

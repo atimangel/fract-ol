@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:36 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 13:01:26 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 13:03:59 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	ft_atoi(const char *string)
 	return (number);
 }
 
-float	ft_atof(const char *string)
+float	ft_atof(char *string)
 {
 	float	number;
 	float	under_dot;
