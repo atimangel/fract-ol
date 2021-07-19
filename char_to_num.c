@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:36 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 13:03:59 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 13:05:55 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ float	ft_atof(char *string)
 
 	number = ft_atoi(string);
 	under_dot = 0;
-	while (ft_isspace(string))
+	while (ft_isspace(*string))
 		string++;
-	pm = ft_ispm(string);
+	pm = ft_ispm(*string);
 	if (pm)
 		string++;
-	while (ft_isdigit(string))
+	while (ft_isdigit(*string))
 		string++;
 	if (*string == '.' && ft_isdigit(string[1]))
 		under_dot = ft_atoi(++string);
