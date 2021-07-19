@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:02:00 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/18 15:08:51 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 13:15:39 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	julia_iterative(t_mandelbrot *man, int n)
 	int	i;
 
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
-		if(pow(man->a, 2) + pow(man->b, 2) > 4)
+		if (pow(man->a, 2) + pow(man->b, 2) > 4)
 			break ;
 		man->aa = pow(man->a, 2) - pow(man->b, 2) + man->ca;
 		man->bb = 2 * man->a * man->b + man->cb;
