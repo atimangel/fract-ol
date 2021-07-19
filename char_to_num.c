@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:36 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/18 15:03:14 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 13:01:26 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,24 @@ int	ft_atoi(const char *string)
 
 float	ft_atof(const char *string)
 {
-	int		i;
 	float	number;
 	float	under_dot;
 	int		pm;
 
-	i = 0;
 	number = ft_atoi(string);
 	under_dot = 0;
-	while (ft_isspace(string[i]))
-		i++;
-	pm = ft_ispm(string[i]);
+	while (ft_isspace(string))
+		string++;
+	pm = ft_ispm(string);
 	if (pm)
-		i++;
-	while (ft_isdigit(string[i]))
-		i++;
-	if (string[i] == '.' && ft_isdigit(string[i + 1]))
-		under_dot = ft_atoi(string + ++i);
+		string++;
+	while (ft_isdigit(string))
+		string++;
+	if (*string == '.' && ft_isdigit(string[1]))
+		under_dot = ft_atoi(++string);
 	while (under_dot >= 1.0)
 		under_dot /= 10;
-	while (string[i++] == '0')
+	while (*(string++) == '0')
 		under_dot /= 10;
 	if (pm == -1)
 		number -= under_dot;
