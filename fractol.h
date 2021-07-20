@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 13:04:33 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/19 13:14:29 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		reset(t_mlx mlx, t_mandelbrot *man, int x, int y);
 void		make_fractal(t_mlx mlx);
 void		trans_color(t_mandelbrot *man, int i);
 void		mandelbrot(t_mlx mlx);
-int		mandelbrot_iterative(t_mandelbrot *man, int n);
+int			mandelbrot_iterative(t_mandelbrot *man, int n);
 /*
 **JULIA
 */
