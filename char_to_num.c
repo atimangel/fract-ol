@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:36 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/24 15:39:08 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 22:10:24 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_isdigit(char c)
 int	ft_atoi(const char *string)
 {
 	int	i;
-	int	number;
+	long	number;
 	int	negative;
 
 	i = 0;
@@ -52,9 +52,9 @@ int	ft_atoi(const char *string)
 	{
 		number *= 10;
 		number += string[i] - '0';
-		if (negative != -1 && (unsigned int)number > 2147483647)
+		if (negative != -1 && number > 2147483647)
 			return (-1);
-		if (negative == -1 && (unsigned int)number > 2147483648)
+		if (negative == -1 && number > 2147483648)
 			return (0);
 		i++;
 	}
