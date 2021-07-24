@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 13:14:29 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 14:30:53 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_mandelbrot
 **EVENT
 */
 int			escape(int key, void *parm);
-int			red_cross(int arg, void *parm);
+int			red_cross(void *parm);
 /*
 **UTILITIE
 */

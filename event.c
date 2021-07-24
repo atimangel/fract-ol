@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:42 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/12 12:32:31 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 14:31:06 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	escape(int key, void *parm)
 	}
 }
 
-int	red_cross(int arg, void *parm)
+int	red_cross(void *parm)
 {
 	t_mlx	*mlx;
 
