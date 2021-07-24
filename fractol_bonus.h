@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 10:57:18 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 16:23:29 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,18 @@ int				red_cross(int arg, void *parm);
 **UTILITIE
 */
 void			error(char *str);
+int				ft_isspace(char c);
+int				ft_ispm(char c);
+int				ft_isdigit(char c);
+int				ft_atoi_err(const char *string);
+float			ft_atof_err(char *string);
 int				ft_atoi(const char *string);
 float			ft_atof(const char *string);
 /*
 **PARSE
 */
 void			parse(int arg_n, char **arg_s, t_mlx *mlx);
+int				parse_error(int arg_n, char **arg_s);
 void			make_fractal(t_mlx *mlx);
 /*
 **MANDELBROT

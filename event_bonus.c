@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:42 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 11:03:09 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 16:22:11 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	key_event(int key, void *parm)
 		free_all(*mlx);
 }
 
-int	red_cross(int arg, void *parm)
+int	red_cross(void *parm)
 {
 	free_all(*(t_mlx *)parm);
 }

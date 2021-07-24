@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/24 14:30:53 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 15:39:12 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,14 @@ int			red_cross(void *parm);
 **UTILITIE
 */
 void		error(char *str);
+int			parse_error(int arg_n, char **arg_s);
+int			ft_isspace(char c);
+int			ft_ispm(char c);
+int			ft_isdigit(char c);
 int			ft_atoi(const char *string);
 float		ft_atof(char *string);
+int			ft_atoi_err(const char *string);
+float		ft_atof_err(char *string);
 /*
 **MANDELBROT
 */

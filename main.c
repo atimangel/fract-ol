@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/18 15:03:23 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 16:18:33 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	parse(int arg_n, char **arg_s, t_mlx *mlx)
 		error("argumant is not enough or to much\na b n max min");
 	if (arg_n >= 5)
 		mlx->n = ft_atoi(arg_s[4]);
+	if (mlx->n < 0)
+		error("n should positive");
 	if (arg_n >= 7)
 	{
 		mlx->max = ft_atof(arg_s[5]);
@@ -74,6 +76,8 @@ int	main(int arg_n, char **arg_s)
 	t_mlx	mlx;
 
 	parse(arg_n, arg_s, &mlx);
+	if (!parse_error(arg_n, arg_s))
+		error("argumant is not number");
 	mlx.x = 1920;
 	mlx.y = 1080;
 	mlx.ratio = (float)mlx.x / mlx.y;

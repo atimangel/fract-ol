@@ -6,20 +6,20 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:36 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 13:09:12 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 16:21:05 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-static	int	ft_isspace(char c)
+int	ft_isspace(char c)
 {
 	if ((c >= 9 && c <= 13) || c == 32)
 		return (1);
 	return (0);
 }
 
-static	int	ft_ispm(char c)
+int	ft_ispm(char c)
 {
 	if (c == '+')
 		return (1);
@@ -28,7 +28,7 @@ static	int	ft_ispm(char c)
 	return (0);
 }
 
-static int	ft_isdigit(int c)
+int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
