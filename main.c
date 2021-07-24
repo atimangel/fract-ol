@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/24 16:18:33 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/24 20:46:30 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	parse(int arg_n, char **arg_s, t_mlx *mlx)
 	mlx->flag = 0;
 	if (arg_n >= 2)
 		mlx->flag = *arg_s[1];
-	if (!(mlx->flag == 'm' || mlx->flag == 'j'))
+	if (!(mlx->flag == 'm' || mlx->flag == 'j') || arg_s[1][1])
 		error("select 'j' julia set or 'm' mandelbrot set");
 	if (arg_n >= 4)
 	{
