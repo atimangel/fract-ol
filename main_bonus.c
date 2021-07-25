@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/24 16:24:09 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/25 16:14:12 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,24 @@ void	make_fractal(t_mlx *mlx)
 void	zoom(t_mlx *m, char flag, float x_ratio, float y_ratio)
 {
 	void	*img;
+	float	x_len;
+	float	y_len;
 
+	x_len = m->x_max - m->x_min;
+	y_len = m->y_max - m->y_min;
 	if (flag == 1 && m->x_max > m->x_min && m->y_max > m->y_min)
 	{
-		m->x_max -= m->x_max * 0.1 * (1 - x_ratio);
-		m->x_min -= m->x_min * 0.1 * x_ratio;
-		m->y_max -= m->y_max * 0.1 * (1 - y_ratio);
-		m->y_min -= m->y_min * 0.1 * y_ratio;
+		m->x_max = m->x_max - x_len * 0.1 * (1 - x_ratio);
+		m->x_min = m->x_min + x_len * 0.1 * x_ratio;
+		m->y_max = m->y_max - y_len * 0.1 * (1 - y_ratio);
+		m->y_min = m->y_min + y_len * 0.1 * y_ratio;
 	}
 	else if (flag == -1 && m->x_max > m->x_min && m->y_max > m->y_min)
 	{
-		m->x_max += m->x_max * 0.1 * (1 - x_ratio);
-		m->x_min += m->x_min * 0.1 * x_ratio;
-		m->y_max += m->y_max * 0.1 * (1 - y_ratio);
-		m->y_min += m->y_min * 0.1 * y_ratio;
+		m->x_max = m->x_max + x_len * 0.1 * (1 - x_ratio);
+		m->x_min = m->x_min - x_len * 0.1 * x_ratio;
+		m->y_max = m->y_max + y_len * 0.1 * (1 - y_ratio);
+		m->y_min = m->y_min - y_len * 0.1 * y_ratio;
 	}
 	img = m->img;
 	m->img = mlx_new_image(m->ptr, m->x, m->y);
