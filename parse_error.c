@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:36 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/24 15:40:42 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/25 20:08:37 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	parse_error(int arg_n, char **arg_s)
 		return (0);
 	if (arg_n >= 6 && !ft_atof_err(arg_s[5]))
 		return (0);
-	if (arg_n >= 7 && !ft_atof_err(arg_s[7]))
+	if (arg_n >= 7 && !ft_atof_err(arg_s[6]))
 		return (0);
 	return (1);
 }

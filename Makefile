@@ -6,7 +6,7 @@
 #    By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/12 11:01:00 by snpark            #+#    #+#              #
-#    Updated: 2021/07/24 16:23:39 by snpark           ###   ########.fr        #
+#    Updated: 2021/07/25 20:13:28 by snpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_BONUS = main_bonus.c\
 	char_to_num_bonus.c\
 	parse_bonus.c\
 	sierpinski_iterate_bonus.c\
-	parse_error.c\
+	parse_error_bonus.c\
 	julia_bonus.c
 
 

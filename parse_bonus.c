@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/19 10:55:52 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/25 20:14:57 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,26 +83,30 @@ static void	parse_sir(int arg_n, char **arg_s, t_mlx *mlx)
 	mlx->g = 50;
 	mlx->blue = 125;
 	mlx->tri = tr;
-	draw_triangle(*mlx, *tr);
 }
 
 void	parse(int arg_n, char **arg_s, t_mlx *mlx)
 {
 	if (arg_n == 1)
 		error("type m or s, j");
-	else if (*arg_s[1] == 'm' || *arg_s[1] == 'j')
+	else if ((*arg_s[1] == 'm' || *arg_s[1] == 'j') && !arg_s[1][1])
 	{
 		mlx->flag = *arg_s[1];
 		parse_man(arg_n, arg_s, mlx);
+		if (!parse_error(arg_n, arg_s))
+			error("a b n max min is number");
 		if (mlx->flag == 'm')
 			mandelbrot(*mlx);
 		else
 			julia(*mlx);
 	}
-	else if (*arg_s[1] == 's')
+	else if (*arg_s[1] == 's' && !arg_s[1][1])
 	{
 		mlx->flag = 's';
 		parse_sir(arg_n, arg_s, mlx);
+		if (!parse_error_sir(arg_n, arg_s))
+			error("0x 0y 1x 1y 2x 2y n max min should be number");
+		draw_triangle(*mlx, *(t_triangle *)mlx->tri);
 	}
 	else
 		error("type m or s, m, j");
