@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/25 20:59:52 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/27 09:24:47 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_triangle
 void			zoom(t_mlx *m, char flag, float x_ratio, float y_ratio);
 int				key_event(int key, void *parm);
 int				red_cross(void *parm);
+void			new_img(t_mlx *m);
 /*
 **UTILITIE
 */

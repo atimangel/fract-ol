@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:36 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/24 22:11:57 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/27 09:52:13 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ int	ft_atoi(const char *string)
 	{
 		number *= 10;
 		number += string[i] - '0';
-		if (negative != -1 && number > 2147483647)
-			return (-1);
-		if (negative == -1 && number > 2147483648)
-			return (0);
+		if ((negative != -1 && number > 2147483647) ||
+			(negative == -1 && number > 2147483648))
+			error("parameter is out of int range");
 		i++;
 	}
 	if (negative == -1)

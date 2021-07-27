@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:55 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/25 18:43:37 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/27 09:25:47 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,7 @@ void	zoom(t_mlx *m, char flag, float x_ratio, float y_ratio)
 		m->y_max = m->y_max + y_len * 0.1 * (1 - y_ratio);
 		m->y_min = m->y_min - y_len * 0.1 * y_ratio;
 	}
-	img = m->img;
-	m->img = mlx_new_image(m->ptr, m->x, m->y);
-	m->pix_str = mlx_get_data_addr(m->img, &m->bpp, &m->len, &m->endian);
-	make_fractal(m);
-	mlx_destroy_image(m->ptr, img);
+	new_img(m);
 }
 
 int	mouse_check(int button, int x, int y, void *parm)
