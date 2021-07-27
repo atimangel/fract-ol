@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:42 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/25 21:01:45 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/27 11:27:03 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	free_all(t_mlx mlx)
 
 static void	move(t_mlx *mlx, char arrow)
 {
-	void	*img;
 	float	x_len;
 	float	y_len;
 
