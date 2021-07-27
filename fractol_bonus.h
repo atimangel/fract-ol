@@ -6,7 +6,7 @@
 /*   By: snpark <snpark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 11:01:51 by snpark            #+#    #+#             */
-/*   Updated: 2021/07/25 20:11:39 by snpark           ###   ########.fr       */
+/*   Updated: 2021/07/25 20:59:52 by snpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void			parse(int arg_n, char **arg_s, t_mlx *mlx);
 int				parse_error(int arg_n, char **arg_s);
 int				parse_error_sir(int arg_n, char **arg_s);
 void			make_fractal(t_mlx *mlx);
+void			new_img(t_mlx *m);
 /*
 **MANDELBROT
 */
